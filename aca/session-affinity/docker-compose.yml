@@ -1,0 +1,23 @@
+services:
+  app1:
+    build: .
+    container_name: app1
+    environment: ["SERVER_PORT=8080"]
+    expose: ["8080"]
+
+  app2:
+    image: ${COMPOSE_PROJECT_NAME:-aca-sticky-lab}_app1
+    build: .
+    container_name: app2
+    environment: ["SERVER_PORT=8080"]
+    expose: ["8080"]
+
+  nginx:
+    image: nginx:stable
+    container_name: proxy
+    depends_on: [ app1, app2 ]
+    ports:
+      - "8080:8080"
+    volumes:
+      # switch file to nginx.roundrobin.conf to disable stickiness
+      - ./nginx.roundrobin.conf:/etc/nginx/nginx.conf:ro      

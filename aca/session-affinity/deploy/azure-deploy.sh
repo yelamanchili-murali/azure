@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RG=rg-aca-sticky-sessions
-LOCATION=eastus
+LOCATION=australiaeast
 ACA_NAME=aca-sticky-sessions-demo
 IMAGE_NAME=${CONTAINER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}
 

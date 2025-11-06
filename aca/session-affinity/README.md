@@ -153,6 +153,24 @@ The script will:
 - Scale to 2 replicas for testing
 - Test the deployment with curl commands
 
+### Expected Output
+
+If everything works correctly, you should see:
+
+**Sticky sessions ON**: Same `host` and `sessionId` with incrementing `hitsCountInThisSession`:
+```json
+{"hitsCountInThisSession":1,"sessionId":"E9C28154...","host":"aca-sticky-sessions-demo--0000001-74f9c48b4b-6nsh5"}
+{"hitsCountInThisSession":2,"sessionId":"E9C28154...","host":"aca-sticky-sessions-demo--0000001-74f9c48b4b-6nsh5"}
+{"hitsCountInThisSession":3,"sessionId":"E9C28154...","host":"aca-sticky-sessions-demo--0000001-74f9c48b4b-6nsh5"}
+```
+
+**Sticky sessions OFF**: Different `sessionId` for each request, `hitsCountInThisSession` always 1:
+```json
+{"sessionId":"A173B704...","host":"...6nsh5","hitsCountInThisSession":1}
+{"sessionId":"C8B2F742...","host":"...9nh8v","hitsCountInThisSession":1}  
+{"sessionId":"ABE99DCC...","host":"...9nh8v","hitsCountInThisSession":1}
+```
+
 ### Testing the Azure Deployment
 
 After deployment, the script automatically tests the application. You can also test manually:

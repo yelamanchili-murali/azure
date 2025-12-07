@@ -1,0 +1,22 @@
+# Secrets and sensitive files
+pull-secret.txt
+*.secret
+*.key
+
+# Environment files
+.env
+.env.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Azure and deployment outputs
+*.log
